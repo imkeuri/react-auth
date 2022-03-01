@@ -4,6 +4,12 @@ import { AuthProvider } from '../contexts/AuthContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './dashboard/Dashboard';
 import Login from './login/login'
+import PrivateRoute from './PrivateRoute';
+import ForgotPassword from './signup/ForgotPassword';
+
+
+
+
 function App() {
   return (
 
@@ -13,9 +19,10 @@ function App() {
         <Router>
           <AuthProvider>
             <Routes>
-              <Route path="/" element={<Dashboard/>}/>
-              <Route path="/signup" element={<Signup/>}/>
-              <Route path="/login" element={<Login/>}/>
+              <Route element={<PrivateRoute />}><Route path='/' element={<Dashboard/>}/></Route>
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path='/forgot-password' element={<ForgotPassword/>}/>
             </Routes>
           </AuthProvider>
         </Router>
